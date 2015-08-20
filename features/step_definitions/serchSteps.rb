@@ -7,7 +7,10 @@ end
 end
 
 ならば(/^アクセスランキング一位のトピック名を取得すること$/) do
-  puts all('span.ttl')[0].text(:all)
-  puts Time.now.strftime("%X")+"\n"
+ File.open('/usr/local/log/log.txt','a') do |file| 
+  file.write all('span.ttl')[0].text(:all)
+  file.write Time.now.strftime("%X")+"\n"
+  file.close
+ end 
 end
 
